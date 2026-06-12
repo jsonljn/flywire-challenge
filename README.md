@@ -2,10 +2,6 @@
 
 **Result:** 2,563 nodes · 2,586 induced edges · identical structure across FAFB, MCNS, and MAOL
 
-## Task
-
-The FlyWire Qualification Challenge asks for a large subgraph that appears identically (as an induced subgraph) in three connectome edge lists: FAFB, MCNS, and MAOL. The deliverable is a CSV aligning one neuron ID per dataset per row, such that the directed edge pattern among selected nodes is the same in all three graphs.
-
 ## Overview
 This repository presents a deterministic graph construction pipeline that identifies a large, identical induced subgraph across three connectome datasets: FAFB, MCNS, and MAOL.
 
