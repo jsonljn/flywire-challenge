@@ -1,5 +1,11 @@
 # FlyWire Qualification Challenge 2026
 
+**Result:** 2,563 nodes · 2,586 induced edges · identical structure across FAFB, MCNS, and MAOL
+
+## Task
+
+The FlyWire Qualification Challenge asks for a large subgraph that appears identically (as an induced subgraph) in three connectome edge lists: FAFB, MCNS, and MAOL. The deliverable is a CSV aligning one neuron ID per dataset per row, such that the directed edge pattern among selected nodes is the same in all three graphs.
+
 ## Overview
 This repository presents a deterministic graph construction pipeline that identifies a large, identical induced subgraph across three connectome datasets: FAFB, MCNS, and MAOL.
 
@@ -16,6 +22,25 @@ The circuit is built using three key components:
 - Strict depth-2 extensions
 
 These constraints ensure zero accidental cross-connections, fully controlled edge patterns, and guaranteed induced subgraph equivalence across datasets. Rather than verifying candidate subgraphs after construction, this method constructs only valid subgraphs, eliminating combinatorial explosion entirely.
+
+## Topology
+
+```
+                         hub
+           _____________|_____________
+          /      |      |      \      \
+      out leaf  ...   in leaf  bi leaf  ...
+         |
+      (parent row 1-655)
+         ^
+         |
+    depth-2 child (rows 1908-2562)
+```
+
+- Rows 1–1854: hub → leaf (out leaves, including depth-2 parents)
+- Rows 1855–1883: leaf → hub (in leaves)
+- Rows 1884–1907: hub ↔ leaf (bi leaves)
+- Rows 1908–2562: child → parent (655 depth-2 chains; parent is row 1 + pair index)
 
 ## How it works
 
@@ -35,6 +60,8 @@ A hub node is chosen per dataset:
 - FAFB: 720575940628908548
 - MCNS: 10157
 - MAOL: 10046
+
+These hubs were selected during exploratory analysis of high-degree candidates: each has a large neighborhood, and together they support the circuit sizes in the counts table below after taking minima across datasets. The IDs are hardcoded constants, not chosen at runtime.
 
 The hub's neighbors (in `adj`, excluding self-loop nodes) are reduced to a greedy maximal independent set: a set of nodes with no edge between any two of them, in either direction.
 
@@ -115,11 +142,11 @@ Every node has a fixed structural role, identical across all three datasets:
 - In leaf (rows 1855-1883): out-degree = 1 (to hub), in-degree = 0
 - Bi leaf (rows 1884-1907): in-degree = 1, out-degree = 1, both to/from hub
 
-Within each role class, all members are mutually interchangeable: no edges exist between any two members of the same class, and their connections to the rest of the circuit are identical in count and direction. The specific neuron filling a given row differs between datasets, but since the role-class sizes (1, 655, 1199, 29, 24, 655) are fixed constants applied identically to all three datasets, any row-by-row alignment produces the same edge pattern in all three, which is the isomorphism.
+Within each role class, all members are mutually interchangeable: no edges exist between any two members of the same class, and their connections to the rest of the circuit are identical in count and direction. The specific neuron filling a given row differs between datasets, but since the role-class sizes (1, 655, 1199, 29, 24, 655) are fixed constants applied identically to all three datasets, row index defines the isomorphism map directly — no general subgraph-isomorphism search is needed.
 
 ## Connectivity
 
-The circuit is weakly connected: in the underlying undirected graph, every row-1-1854 node (out leaves and depth-2 parents), every in leaf, and every bi leaf is directly connected to the hub. Every depth-2 child (rows 1908-2562) is connected to its parent (one of rows 1-655), which is itself connected to the hub. So every node is within 2 steps of the hub, ignoring direction.
+The circuit is weakly connected by construction: in the underlying undirected graph, every row-1-1854 node (out leaves and depth-2 parents), every in leaf, and every bi leaf is directly connected to the hub. Every depth-2 child (rows 1908-2562) is connected to its parent (one of rows 1-655), which is itself connected to the hub. So every node is within 2 steps of the hub, ignoring direction. The verification step does not re-check connectivity separately; it follows from this layout.
 
 ## How the counts were derived
 
@@ -149,7 +176,7 @@ Verified output:
 fafb: unique=2,563 duplicates=0 internal_edges=2,586 matches_expected=True
 mcns: unique=2,563 duplicates=0 internal_edges=2,586 matches_expected=True
 maol: unique=2,563 duplicates=0 internal_edges=2,586 matches_expected=True
-all three induced patterns are identical and weakly connected
+all three induced patterns are identical (weakly connected by construction)
 ```
 
 ## Limitations
@@ -171,13 +198,26 @@ Place the following files in the same directory as the script:
 
 Each file is a CSV with header "source neuron id,target neuron id" and one directed edge per row.
 
+## Output format
+
+The script writes `network.csv` with one row per structural role and three columns (`fafb`, `mcns`, `maol`). Row index is the isomorphism map: the same row index in each dataset plays the same role in the circuit.
+
+```csv
+fafb,mcns,maol
+720575940628908548,10157,10046
+720575940603404834,21615,23597
+...
+```
+
+A precomputed `network.csv` (2,563 data rows) is included in this repository so reviewers can inspect the result without downloading the edge lists. Re-run `solution.py` to regenerate it when the input CSVs are present.
+
 ## Usage
 
 ```
 python solution.py
 ```
 
-The script loads each graph, builds and verifies the induced subgraph, and writes the result to solution.csv. Runtime is roughly 90 seconds, dominated by CSV parsing of the three multi-million-edge files.
+The script loads each graph, builds and verifies the induced subgraph, and writes the result to `network.csv`. Runtime is roughly 90 seconds, dominated by CSV parsing of the three multi-million-edge files.
 
 ## Results Summary
 
