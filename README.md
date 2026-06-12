@@ -33,10 +33,10 @@ These constraints ensure zero accidental cross-connections, fully controlled edg
     depth-2 child (rows 1908-2562)
 ```
 
-- Rows 1–1854: hub → leaf (out leaves, including depth-2 parents)
-- Rows 1855–1883: leaf → hub (in leaves)
-- Rows 1884–1907: hub ↔ leaf (bi leaves)
-- Rows 1908–2562: child → parent (655 depth-2 chains; parent is row 1 + pair index)
+- Rows 1-1854: hub -> leaf (out leaves, including depth-2 parents)
+- Rows 1855-1883: leaf -> hub (in leaves)
+- Rows 1884-1907: hub <-> leaf (bi leaves)
+- Rows 1908-2562: child -> parent (655 depth-2 chains; parent is row 1 + pair index)
 
 ## How it works
 
@@ -57,7 +57,7 @@ A hub node is chosen per dataset:
 - MCNS: 10157
 - MAOL: 10046
 
-These hubs were selected during exploratory analysis of high-degree candidates: each has a large neighborhood, and together they support the circuit sizes in the counts table below after taking minima across datasets. The IDs are hardcoded constants, not chosen at runtime.
+The hub IDs are fixed constants in the script. The counts table below shows the resulting circuit size after taking the minimum feasible counts across all three datasets for these specific hubs.
 
 The hub's neighbors (in `adj`, excluding self-loop nodes) are reduced to a greedy maximal independent set: a set of nodes with no edge between any two of them, in either direction.
 
@@ -138,7 +138,7 @@ Every node has a fixed structural role, identical across all three datasets:
 - In leaf (rows 1855-1883): out-degree = 1 (to hub), in-degree = 0
 - Bi leaf (rows 1884-1907): in-degree = 1, out-degree = 1, both to/from hub
 
-Within each role class, all members are mutually interchangeable: no edges exist between any two members of the same class, and their connections to the rest of the circuit are identical in count and direction. The specific neuron filling a given row differs between datasets, but since the role-class sizes (1, 655, 1199, 29, 24, 655) are fixed constants applied identically to all three datasets, row index defines the isomorphism map directly — no general subgraph-isomorphism search is needed.
+Within each role class, all members are mutually interchangeable: no edges exist between any two members of the same class, and their connections to the rest of the circuit are identical in count and direction. The specific neuron filling a given row differs between datasets, but since the role-class sizes (1, 655, 1199, 29, 24, 655) are fixed constants applied identically to all three datasets, row index defines the isomorphism map directly -- no general subgraph-isomorphism search is needed.
 
 ## Connectivity
 
