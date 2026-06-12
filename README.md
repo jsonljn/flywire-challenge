@@ -1,10 +1,21 @@
 # FlyWire Qualification Challenge 2026
 
-This repository contains a graph-matching pipeline that identifies an identical induced subgraph across three connectome datasets: FAFB, MCNS, and MAOL.
+## Overview
+This repository presents a deterministic graph construction pipeline that identifies a large, identical induced subgraph across three connectome datasets: FAFB, MCNS, and MAOL.
 
-The pipeline produces a weakly connected, isomorphic subgraph of 2,563 nodes, with identical induced edge patterns (2,586 edges) verified against the raw edge lists for all three datasets.
+The solution produces a weakly connected, structurally isomorphic circuit of 2,563 nodes and 2,586 edges, with exact induced edge-pattern matching verified directly against the raw datasets.
 
-Matching is based on structural isomorphism only. The selected hub neurons and their roles are not claimed to be biologically homologous; correspondence is by topological role within the constructed circuit, not by cell type or brain region.
+Critically, this approach avoids the intractability of general subgraph isomorphism by constructing a topology where correctness is guaranteed by design, rather than discovered through search.
+
+## Core Strategy
+Subgraph isomorphism is NP-hard in general. Instead of searching arbitrary subgraphs, this solution constrains the search space to a topology that enforces isomorphism structurally.
+
+The circuit is built using three key components:
+- Hub-centered star
+- Maximal independent leaf set
+- Strict depth-2 extensions
+
+These constraints ensure zero accidental cross-connections, fully controlled edge patterns, and guaranteed induced subgraph equivalence across datasets. Rather than verifying candidate subgraphs after construction, this method constructs only valid subgraphs, eliminating combinatorial explosion entirely.
 
 ## How it works
 
