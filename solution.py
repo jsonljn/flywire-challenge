@@ -25,7 +25,7 @@ ROOT_COUNTS = {
 
 DEPTH2_COUNT = 655
 TRIPLE = ["fafb", "mcns", "maol"]
-OUTPUT = Path("solution.csv")
+OUTPUT = Path("network.csv")
 
 
 def load_graph(path: Path):
@@ -305,7 +305,7 @@ def verify_solution(rows):
     if not (patterns["fafb"] == patterns["mcns"] == patterns["maol"]):
         raise RuntimeError("induced patterns are not mutually identical")
 
-    print("  all three induced patterns are identical and weakly connected")
+    print("  all three induced patterns are identical (weakly connected by construction)")
 
 
 def main():
