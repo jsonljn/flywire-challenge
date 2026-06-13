@@ -38,9 +38,8 @@ We hypothesize that the FAFB projection captures a **conserved optic-lobe motion
 
 Sign in at [codex.flywire.ai](https://codex.flywire.ai):
 
-1. **Hub 3D mesh (CT1):** [FAFB 720575940628908548](https://codex.flywire.ai/app/cell_details?dataset=fafb&cell_id=720575940628908548)
-2. **Examples:** T4d parent [720575940603404834](https://codex.flywire.ai/app/cell_details?dataset=fafb&cell_id=720575940603404834) · Tm4 child [720575940639153215](https://codex.flywire.ai/app/cell_details?dataset=fafb&cell_id=720575940639153215) · Mi9 in-leaf [720575940606543392](https://codex.flywire.ai/app/cell_details?dataset=fafb&cell_id=720575940606543392)
-3. **Network graph:** [Connectivity -- CT1 neighborhood](https://codex.flywire.ai/app/connectivity?dataset=fafb&cell_names_or_ids=720575940628908548), or upload all FAFB IDs from `network.csv` via **List -> Upload** for the full 2,563-node graph and 3D scene.
+1. **Hub 3D mesh (CT1):** [FAFB 720575940628908548](https://codex.flywire.ai/app/cell_details?dataset=fafb&cell_names_or_id=720575940628908548)
+2. **Network graph:** [Connectivity -- CT1 neighborhood](https://codex.flywire.ai/app/connectivity?dataset=fafb&cell_names_or_ids=720575940628908548), or upload all FAFB IDs from `network.csv` via **List -> Upload** for the full 2,563-node graph and 3D scene.
 
 ## References
 
