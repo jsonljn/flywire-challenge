@@ -32,7 +32,7 @@ Directional selectivity in T4 (ON) and T5 (OFF) emerges in their dendrites via i
 
 ## Hypothesis
 
-We hypothesize that the FAFB projection captures a **conserved optic-lobe motion-processing neighborhood** — stereotyped columnar circuitry and CT1 feedback repeated across brains — rather than an arbitrary mixed-brain subgraph. Cross-dataset isomorphism (FAFB/MCNS/MAOL) may reflect this stereotypy even though neuron IDs differ and regional matching was not required. Depth-2 extensions enlarge *N* topologically; biologically, they assign known T4/T5 input types as peripheral nodes. A follow-up is to test whether child → parent pairs recapitulate established synapse motifs (e.g., Mi9 → T4, Tm4 → T5) at scale in FAFB.
+The FAFB projection captures a **conserved optic-lobe motion-processing neighborhood** — stereotyped columnar circuitry and CT1 feedback repeated across brains — rather than an arbitrary mixed-brain subgraph. Cross-dataset isomorphism (FAFB/MCNS/MAOL) may reflect this stereotypy even though neuron IDs differ and regional matching was not required. Depth-2 extensions enlarge *N* topologically; biologically, they assign known T4/T5 input types as peripheral nodes. A follow-up is to test whether child → parent pairs recapitulate established synapse motifs (e.g., Mi9 → T4, Tm4 → T5) at scale in FAFB.
 
 ## Visualizations (Codex)
 
