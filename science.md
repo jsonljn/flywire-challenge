@@ -36,8 +36,22 @@ We hypothesize that the FAFB projection captures a **conserved optic-lobe motion
 
 ## Visualizations (Codex)
 
-Sign in at [codex.flywire.ai](https://codex.flywire.ai):
+*(The images below are generated from the FAFB dataset via FlyWire Codex, capturing the CT1 (R) hub neuron ID `720575940628908548`)*
 
+**1. The Hub-Centered Star Topology (Network Graph):**
+![CT1 Hub-Centered Star Network](ct1_star_network.png)
+*Figure 1: Node-level network graph of the CT1 (R) hub neuron. This visualizes the algorithmic core of our approach: anchoring the graph on a central hub and branching out to an independent set of leaf nodes to guarantee structural isomorphism.*
+
+**2. Regional Connectivity:**
+![CT1 Regional Connections](ct1_region_network.png)
+*Figure 2: Region-level network graph detailing the top connections by synapse count. Note the massive connectivity to the Lobula (LO_L) and Medulla (ME_L), supporting our motion-ensemble hypothesis.*
+
+**3. 3D Mesh Visualization:**
+![CT1 3D Mesh in FlyWire Codex](ct1_3d_mesh.png)
+*Figure 3: 3D mesh rendering of the CT1 (R) neuron. The physical structure confirms it is a wide-field tangential neuron spanning large portions of the optic lobe.*
+
+**Live Interactive Links:**
+Sign in at [codex.flywire.ai](https://codex.flywire.ai) to explore interactively:
 1. **Hub 3D mesh (CT1):** [FAFB 720575940628908548](https://codex.flywire.ai/app/cell_details?dataset=fafb&cell_names_or_id=720575940628908548)
 2. **Network graph:** [Connectivity — CT1 neighborhood](https://codex.flywire.ai/app/connectivity?dataset=fafb&cell_names_or_ids=720575940628908548), or upload all FAFB IDs from `network.csv` via **List → Upload** for the full 2,563-node graph and 3D scene.
 
