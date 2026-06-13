@@ -40,7 +40,7 @@ We hypothesize that the FAFB projection captures a **conserved optic-lobe motion
 
 **1. The Hub-Centered Star Topology (Network Graph):**
 
-![CT1 Hub-Centered Star Network](ct1_star_network.png)
+![CT1 Hub-Centered Star Network](visualizations/ct1_star_network.png)
 
 *Figure 1: Node-level network graph of the CT1 (R) hub neuron. This visualizes the algorithmic core of our approach: anchoring the graph on a central hub and branching out to an independent set of leaf nodes to guarantee structural isomorphism.*
 
@@ -48,7 +48,7 @@ We hypothesize that the FAFB projection captures a **conserved optic-lobe motion
 
 **2. Regional Connectivity:**
 
-![CT1 Regional Connections](ct1_region_network.png)
+![CT1 Regional Connections](visualizations/ct1_region_network.png)
 
 *Figure 2: Region-level network graph detailing the top connections by synapse count. Note the massive connectivity to the Lobula (LO_L) and Medulla (ME_L), supporting our motion-ensemble hypothesis.*
 
@@ -56,7 +56,7 @@ We hypothesize that the FAFB projection captures a **conserved optic-lobe motion
 
 **3. 3D Mesh Visualization:**
 
-![CT1 3D Mesh in FlyWire Codex](ct1_3d_mesh.png)
+![CT1 3D Mesh in FlyWire Codex](visualizations/ct1_3d_mesh.png)
 
 *Figure 3: 3D mesh rendering of the CT1 (R) neuron. The physical structure confirms it is a wide-field tangential neuron spanning large portions of the optic lobe.*
 
